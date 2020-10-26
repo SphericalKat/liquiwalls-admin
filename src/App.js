@@ -1,9 +1,22 @@
 import React from "react";
-import { Admin, Resource, ListGuesser } from "react-admin";
+import {
+  Admin,
+  Resource,
+  ListGuesser,
+  EditGuesser,
+  ShowGuesser,
+} from "react-admin";
 import {
   FirebaseAuthProvider,
   FirebaseDataProvider,
 } from "react-admin-firebase";
+import { WallList, WallEdit, WallShow, WallCreate } from "./WallViews";
+import {
+  CategoryList,
+  CategoryCreate,
+  CategoryEdit,
+  CategoryShow,
+} from "./CategoryViews";
 
 const config = {
   apiKey: "AIzaSyAO1LTfk5M5uSvWAXng_J790kmPmQyU0j8",
@@ -25,8 +38,21 @@ const dataProvider = FirebaseDataProvider(config, options);
 const authProvider = FirebaseAuthProvider(config, options);
 
 const App = () => (
-  <Admin dataProvider={dataProvider} authProvider={authProvider} >
-      <Resource name="walls" list={ListGuesser} />
+  <Admin dataProvider={dataProvider} authProvider={authProvider}>
+    <Resource
+      name="walls"
+      list={WallList}
+      edit={WallEdit}
+      show={WallShow}
+      create={WallCreate}
+    />
+    <Resource
+      name="categories"
+      list={CategoryList}
+      edit={CategoryEdit}
+      show={CategoryShow}
+      create={CategoryCreate}
+    />
   </Admin>
 );
 
