@@ -1,11 +1,5 @@
 import React from "react";
-import {
-  Admin,
-  Resource,
-  ListGuesser,
-  EditGuesser,
-  ShowGuesser,
-} from "react-admin";
+import { Admin, Resource } from "react-admin";
 import {
   FirebaseAuthProvider,
   FirebaseDataProvider,
@@ -30,9 +24,7 @@ const config = {
 };
 
 // All options are optional
-const options = {
-  logging: true,
-};
+const options = {};
 
 const dataProvider = FirebaseDataProvider(config, options);
 const authProvider = FirebaseAuthProvider(config, options);

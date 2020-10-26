@@ -14,6 +14,8 @@ import {
   ReferenceArrayField,
   SingleFieldList,
   ChipField,
+  ReferenceArrayInput,
+  SelectArrayInput,
 } from "react-admin";
 
 export const WallList = (props) => (
@@ -23,7 +25,11 @@ export const WallList = (props) => (
       <NumberField source="downloads" />
       <UrlField source="url" />
       <NumberField source="favorites" />
-      <ReferenceArrayField label="Categories" reference="categories" source="category_ids">
+      <ReferenceArrayField
+        label="Categories"
+        reference="categories"
+        source="category_ids"
+      >
         <SingleFieldList>
           <ChipField source="name" />
         </SingleFieldList>
@@ -39,6 +45,15 @@ export const WallShow = (props) => (
       <NumberField source="downloads" />
       <UrlField source="url" />
       <NumberField source="favorites" />
+      <ReferenceArrayField
+        label="Categories"
+        reference="categories"
+        source="category_ids"
+      >
+        <SingleFieldList>
+          <ChipField source="name" />
+        </SingleFieldList>
+      </ReferenceArrayField>
     </SimpleShowLayout>
   </Show>
 );
@@ -50,6 +65,9 @@ export const WallEdit = (props) => (
       <NumberInput source="downloads" />
       <TextInput source="url" />
       <NumberInput source="favorites" />
+      <ReferenceArrayInput label="Categories" source="category_ids" reference="categories">
+        <SelectArrayInput optionText="name" />
+      </ReferenceArrayInput>
     </SimpleForm>
   </Edit>
 );
@@ -57,9 +75,10 @@ export const WallEdit = (props) => (
 export const WallCreate = (props) => (
   <Create {...props}>
     <SimpleForm>
-      <NumberInput source="downloads" />
       <TextInput source="url" />
-      <NumberInput source="favorites" />
+      <ReferenceArrayInput label="Categories" source="category_ids" reference="categories">
+        <SelectArrayInput optionText="name" />
+      </ReferenceArrayInput>
     </SimpleForm>
   </Create>
 );
